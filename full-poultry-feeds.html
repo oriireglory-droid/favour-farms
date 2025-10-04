@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POULTRY FEEDS - Favour's Farm</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Top Header -->
+    <div class="bg-amber-900 py-2 text-center">
+        <p class="text-xs font-bold text-white">FAVOUR'S FARM AND FEEDS: BRINGING EASE AND CONVENIENCE INTO THE AGRO-MARKET</p>
+    </div>
+
+    <!-- Navigation & Search -->
+    <header class="bg-amber-800 py-4 px-4 md:px-8">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div class="mb-4 md:mb-0">
+                <h1 class="text-xl md:text-2xl font-serif font-bold text-white">FAVOUR'S FARM AND FEEDS</h1>
+            </div>
+            
+            <div class="relative w-full md:w-1/2 mb-4 md:mb-0">
+                <input type="text" placeholder="Search for products, Brands, and more" class="w-full py-2 px-4 rounded-l-lg text-gray-800 focus:outline-none">
+                <button class="absolute right-0 top-0 bg-white py-2 px-4 rounded-r-lg">
+                    <i class="fa fa-search text-amber-800"></i>
+                </button>
+            </div>
+            
+            <div class="flex items-center space-x-6">
+                <a href="#" class="flex items-center text-white hover:text-amber-200">
+                    <i class="fa fa-heart-o mr-1"></i>
+                    <span class="hidden md:inline">Wishlist</span>
+                </a>
+                <a href="#" class="flex items-center text-white hover:text-amber-200">
+                    <i class="fa fa-user-circle-o mr-1"></i>
+                    <span class="hidden md:inline">Login</span>
+                </a>
+                <a href="cart.html" class="flex items-center text-white hover:text-amber-200 relative" onclick="checkCart()">
+                    <i class="fa fa-shopping-cart mr-1"></i>
+                    <span class="hidden md:inline">Cart</span>
+                    <span class="cart-count absolute -top-2 -right-2 text-xs" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Menu -->
+    <nav class="bg-gray-800 py-3">
+        <div class="container mx-auto">
+            <ul class="flex flex-wrap justify-center space-x-4 md:space-x-8">
+                <li><a href= "index.html" class="text-white hover:text-amber-400 font-large">Home</a></li>
+                <li><a href="full-poultry-feeds.html" class="text-amber-400 font-large">Poultry feeds</a></li>
+                <li><a href="#" class="text-white hover:text-amber-400 font-large">Dog feeds</a></li>
+                <li><a href="#" class="text-white hover:text-amber-400 font-large">Pig feeds</a></li>
+                <li><a href="#" class="text-white hover:text-amber-400 font-large">Fish feeds</a></li>
+                <li><a href="#" class="text-white hover:text-amber-400 font-large">Farm equipment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="py-8 bg-gray-800">
+        <div class="container mx-auto text-center">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Poultry Feeds</h1>
+            <p class="text-lg text-gray-300">High-quality feeds for healthy and productive poultry</p>
+        </div>
+    </section>
+
+<!-- Product-Section HTML Code STARTS -->
+<section class="py-12 bg-gray-900">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">Featured Products</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
+                <!-- Product 1 -->
+                <div class="product-card bg-gray-800 rounded-lg overflow-hidden shadow-lg" data-aos="fade-up">
+                    <div class="h-64 overflow-hidden">
+                        <img src="images1/510.jpg" alt="NEW HOPE BROILER STARTER" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">NEW HOPE BROILER STARTER [510]</h3>
+                        <p class="text-amber-400 font-bold mb-4">₦24,970 [PER BAG]</p>
+                        <button class="w-full bg-amber-700 hover:bg-amber-600 text-white py-2 rounded-lg transition duration-300" onclick="addToCart()">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-gray-800 rounded-lg overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-64 overflow-hidden">
+                        <img src="images1/A-GP.jpg" alt="ADVA GROWER" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">ADVA GROWER</h3>
+                        <p class="text-amber-400 font-bold mb-4">₦16,480 [PER BAG]</p>
+                        <button class="w-full bg-amber-700 hover:bg-amber-600 text-white py-2 rounded-lg transition duration-300" onclick="addToCart()">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-gray-800 rounded-lg overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-64 overflow-hidden">
+                        <img src="images1/HC-EPFP.jpg" alt="HAPPY CHICKEN PROF. FINISHER" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">HAPPY CHICKEN PROF. FINISHER</h3>
+                        <p class="text-amber-400 font-bold mb-4">₦24,970 [PER BAG]</p>
+                        <button class="w-full bg-amber-700 hover:bg-amber-600 text-white py-2 rounded-lg transition duration-300" onclick="addToCart()">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-gray-800 rounded-lg overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-64 overflow-hidden">
+                        <img src="images1/C-CFP.jpg" alt="CHEEKY FINISHER PELLET" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">CHEEKY FINISHER PELLET</h3>
+                        <p class="text-amber-400 font-bold mb-4">₦19,480 [PER BAG]</p>
+                        <button class="w-full bg-amber-700 hover:bg-amber-600 text-white py-2 rounded-lg transition duration-300" onclick="addToCart()">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Poultry Products -->
+    <section class="py-12 bg-gray-800">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">Additional featured Poultry Products</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+                <!-- Product 1 -->
+                <div class="product-card bg-gray-700 rounded-lg overflow-hidden shadow-lg" data-aos="fade-up">
+                    <div class="h-56 overflow-hidden">
+                        <img src="http://static.photos/agriculture/640x360/44" alt="Layer Mash" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Premium Layer Vitamins</h3>
+                        <p class="text-amber-400 font-bold mb-4">₦22,500 [PER BAG]</p>
+                        <button class="w-full bg-amber-700 hover:bg-amber-600 text-white py-2 rounded-lg transition duration-300" onclick="addToCart()">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-gray-700 rounded-lg overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-56 overflow-hidden">
+                        <img src="http://static.photos/agriculture/640x360/45" alt="Chick Grower" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Super Chick Grower fillers</h3>
+                        <p class="text-amber-400 font-bold mb-4">₦18,750 [PER BAG]</p>
+                        <button class="w-full bg-amber-700 hover:bg-amber-600 text-white py-2 rounded-lg transition duration-300" onclick="addToCart()">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-gray-700 rounded-lg overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-56 overflow-hidden">
+                        <img src="http://static.photos/agriculture/640x360/46" alt="Poultry Supplement" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Poultry Vitamins Supplement</h3>
+                        <p class="text-amber-400 font-bold mb-4">₦8,500 [PER KG]</p>
+                        <button class="w-full bg-amber-700 hover:bg-amber-600 text-white py-2 rounded-lg transition duration-300" onclick="addToCart()">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-12 bg-gray-900">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
+                <div class="flex items-center bg-gray-800 p-4 rounded-lg" data-aos="fade-right">
+                    <i class="fa fa-truck text-3xl text-amber-500 mr-4"></i>
+                    <div>
+                        <h4 class="font-semibold">Fast Delivery</h4>
+                        <p class="text-sm text-gray-300">Same day delivery in IBADAN</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center bg-gray-800 p-4 rounded-lg" data-aos="fade-right" data-aos-delay="100">
+                    <i class="fa fa-headphones text-3xl text-amber-500 mr-4"></i>
+                    <div>
+                        <h4 class="font-semibold">24/7 Support</h4>
+                        <p class="text-sm text-gray-300">Expert advice available</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center bg-gray-800 p-4 rounded-lg" data-aos="fade-right" data-aos-delay="200">
+                    <i class="fa fa-shield text-3xl text-amber-500 mr-4"></i>
+                    <div>
+                        <h4 class="font-semibold">Quality Guarantee</h4>
+                        <p class="text-sm text-gray-300">Premium quality feeds</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center bg-gray-800 p-4 rounded-lg" data-aos="fade-right" data-aos-delay="300">
+                    <i class="fa fa-percent text-3xl text-amber-500 mr-4"></i>
+                    <div>
+                        <h4 class="font-semibold">Best Prices</h4>
+                        <p class="text-sm text-gray-300">Competitive market prices</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Account</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-amber-400">Home</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">About us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">Search</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">Cart</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">Checkout</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">My Account</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">My Profile</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">Change Password</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">Order History</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">My Wishlist</a></li>
+                        <li><a href="#" class="text-gray-极 hover:text-amber-400">Track Order</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">Login</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">FAQ</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">Contact us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">Download App</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">Become a Partner</a></极>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fa fa-envelope-o text-amber-500 mt-1 mr-2"></i>
+                            <span>EMAIL: Mopelola.adebowale@yahoo.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-phone text-amber-500 mt-1 mr-2"></i>
+                            <span>PHONE: +234-80-3251-1599</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-map-marker text-amber-500 mt-1 mr-2"></i>
+                            <span>ADDRESS: Oke-omi, Pagun Junction, Ibadan, Oyo State, Nigeria</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-globe text-amber-500 mt-1 mr-2"></i>
+                            <span>WEBSITE: www.favoursfarm.com</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-2xl text-gray-300 hover:text-blue-600"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="text-2xl text-gray-300 hover:text-blue-400"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="text-2xl text-gray-300 hover:text-pink-600"><i class极="fa fa-instagram"></i></a>
+                        <a href="#" class="text-2xl text-gray-300 hover:text-green-500"><i class="fa fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p>Copyright © 2025, Favour's Farm and Feeds. All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+       <script src="javaScript/scriptt.js"></script>
+    </body>
+</html>

@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Favour's Farm and Feeds</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .cart-item {
+            transition: all 0.3s ease;
+        }
+        .remove-btn:hover {
+            color: #ef4444;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <div class="bg-amber-900 py-2 text-center">
+        <p class="text-xs font-bold text-white">FAVOUR'S FARM AND FEEDS: BRINGING EASE AND CONVENIENCE INTO THE AGRO-MARKET</p>
+    </div>
+
+    <header class="bg-amber-800 py-4 px-4 md:px-8">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div class="mb-4 md:mb-0">
+                <h1 class="text-xl md:text-2xl font-serif font-bold text-white">FAVOUR'S FARM AND FEEDS</h1>
+            </div>
+            
+            <div class="relative w-full md:w-1/2 mb-4 md:mb-0">
+                <input type="text" placeholder="Search for products, Brands, and more" class="w-full py-2 px-4 rounded-l-lg text-gray-800 focus:outline-none">
+                <button class="absolute right-0 top-0 bg-white py-2 px-4 rounded-r-lg">
+                    <i class="fa fa-search text-amber-800"></i>
+                </button>
+            </div>
+            
+            <div class="flex items-center space-x-6">
+                <a href="#" class="flex items-center text-white hover:text-amber-200">
+                    <i class="fa fa-heart-o mr-1"></i>
+                    <span class="hidden md:inline">Wishlist</span>
+                </a>
+                <a href="#" class="flex items-center text-white hover:text-amber-200">
+                    <i class="fa fa-user-circle-o mr-1"></i>
+                    <span class="hidden md:inline">Login</span>
+                </a>
+                <a href="cart.html" class="flex items-center text-white hover:text-amber-200 relative">
+                    <i class="fa fa-shopping-cart mr-1"></i>
+                    <span class="hidden md:inline">Cart</span>
+                    <span class="cart-count absolute -top-2 -right-2 text-xs" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-gray-800 py-3">
+        <div class="container mx-auto">
+            <ul class="flex flex-wrap justify-center space-x-4 md:space-x-8">
+                <li><a href="index.html" class="text-white-400 font-medium">Home</a></li>
+                <li><a href="full-poultry-feeds.html" class="text-white hover:text-amber-400 font-mediuum">Poultry feeds</a></li>
+                <li><a href="#" class="text-white hover:text-amber-400 font-medium">Dog feeds</a></li>
+                <li><a href="#" class="text-white hover:text-amber-400 font-medium">Pig feeds</a></li>
+                <li><a href="#" class="text-white hover:text-amber-400 font-medium">Fish feeds</a></li>
+                <li><a href="#" class="text-white hover:text-amber-400 font-medium">Farm equipment</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto py-8 px-4">
+        <h1 class="text-2xl font-bold mb-6">Your Shopping Cart</h1>
+        
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+ 
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-bold mb-4">Payment Information</h2>
+            <div class="mb-6">
+                <p class="mb-2"><span class="font-semibold">Account Name:</span> ADEBOWALE GLORY TOMIWA</p>
+                <p class="mb-2"><span class="font-semibold">Bank:</span> OPAY</p>
+                <p class="mb-4"><span class="font-semibold">Account Number:</span> 8074213547</p>
+                <p class="text-sm text-gray-600">Please make payment to the account above and send proof of payment via WhatsApp to 08074213547 with your order details.</p>
+            </div>
+
+            <div class="mb-6">
+                <label for="customerName" class="block mb-2 font-medium">Your Name</label>
+                <input type="text" id="customerName" class="w-full p-2 border rounded" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="mb-6">
+                <label for="customerPhone" class="block mb-2 font-medium">Phone Number</label>
+                <input type="tel" id="customerPhone" class="w-full p-2 border rounded" placeholder="Enter your phone number" required>
+            </div>
+
+            <div class="mb-6">
+                <label for="deliveryAddress" class="block mb-2 font-medium">Delivery Address</label>
+                <textarea id="deliveryAddress" class="w-full p-2 border rounded" rows="3" placeholder="Enter your delivery address" required></textarea>
+            </div>
+
+            <button id="placeOrderBtn" class="w-full bg-amber-700 hover:bg-amber-800 text-white py-3 px-4 rounded-lg font-bold transition duration-300">
+                Place Order via WhatsApp
+            </button>
+        </div>
+    </main>
+
+            <script>
+        // Initialize animations
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        
+        // Initialize feather icons
+        feather.replace();
+        
+        // Cart functionality
+        let cartQuantity = 0;
+        
+        function addToCart() {
+            cartQuantity++;
+            document.getElementById('cartCount').textContent = cartQuantity;
+            
+            // Show notification
+            const notification = document.createElement('div');
+            notification.className = 'fixed bottom-4 right-4 bg-amber-600 text-white px-4 py-2 rounded-lg shadow-lg';
+            notification.textContent = 'Item added to cart!';
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 2000);
+        }
+        
+        function checkCart() {
+            if (cartQuantity === 0) {
+                alert('Your cart is empty');
+            } else {
+                console.log(`There are ${cartQuantity} items in your cart`);
+            }
+        }
+    </script>
+
+        <script>
+// Favour's Farm Cart Management System
+(function() {
+    'use strict';
+    
+    // Cart management object
+    const FarmCart = {
+        // Get cart from localStorage
+        getCart: function() {
+            try {
+                return JSON.parse(localStorage.getItem('favoursFarmCart')) || [];
+            } catch (e) {
+                return [];
+            }
+        },
+        
+        // Save cart to localStorage
+        saveCart: function(cart) {
+            try {
+                localStorage.setItem('favoursFarmCart', JSON.stringify(cart));
+            } catch (e) {
+                console.error('Failed to save cart:', e);
+            }
+        },
+        
+        // Add item to cart
+        addItem: function(product) {
+            let cart = this.getCart();
+            const existingItem = cart.find(item => item.name === product.name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    ...product,
+                    quantity: 1,
+                    id: Date.now() + Math.random()
+                });
+            }
+            
+            this.saveCart(cart);
+            this.updateCartCount();
+            this.showAddedNotification(product.name);
+        },
+        
+        // Remove item from cart
+        removeItem: function(itemId) {
+            let cart = this.getCart();
+            cart = cart.filter(item => item.id !== itemId);
+            this.saveCart(cart);
+            this.updateCartCount();
+            this.updateCartPage();
+        },
+        
+        // Update item quantity
+        updateQuantity: function(itemId, newQuantity) {
+            let cart = this.getCart();
+            const item = cart.find(item => item.id === itemId);
+            
+            if (item) {
+                if (newQuantity <= 0) {
+                    this.removeItem(itemId);
+                } else {
+                    item.quantity = newQuantity;
+                    this.saveCart(cart);
+                    this.updateCartCount();
+                    this.updateCartPage();
+                }
+            }
+        },
+        
+        // Update cart count display
+        updateCartCount: function() {
+            const cart = this.getCart();
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            
+            // Update cart count in navigation
+            const cartElements = document.querySelectorAll('[href*="cart"], [onclick*="cart"]');
+            cartElements.forEach(element => {
+                const textContent = element.textContent;
+                if (textContent.includes('Cart') || textContent.includes('0')) {
+                    element.textContent = textContent.replace(/\d+/, totalItems.toString());
+                }
+            });
+            
+            // Also update any standalone cart count
+            const cartCountElements = document.querySelectorAll('.cart-count');
+            cartCountElements.forEach(element => {
+                element.textContent = totalItems;
+            });
+        },
+        
+        // Show notification when item is added
+        showAddedNotification: function(productName) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #10B981;
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 1000;
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                max-width: 300px;
+                animation: slideIn 0.3s ease-out;
+            `;
+            
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                    <span><strong>${productName}</strong> added to cart!</span>
+                </div>
+            `;
+            
+            // Add animation styles
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes slideOut {
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(100%); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            document.body.appendChild(notification);
+            
+            // Remove notification after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease-in';
+                setTimeout(() => {
+                    notification.remove();
+                    style.remove();
+                }, 300);
+            }, 3000);
+        },
+        
+// Enhanced parse product information from page
+        parseProductInfo: function(button) {
+            var productContainer = button.parentNode;
+            var productName = '';
+            var productPrice = 0;
+            var priceText = '';
+            var unit = '';
+            
+            // First, look for h3 tag specifically for product name
+            var currentElement = productContainer;
+            for (var level = 0; level < 4; level++) {
+                if (!currentElement) break;
+                
+                // Look for h3 elements in current container
+                var h3Elements = currentElement.querySelectorAll('h3');
+                for (var h = 0; h < h3Elements.length; h++) {
+                    var h3Text = h3Elements[h].textContent.trim();
+                    if (h3Text && h3Text.indexOf('Add to Cart') === -1 && h3Text.length > 2) {
+                        productName = h3Text;
+                        break;
+                    }
+                }
+                
+                // If we found a name in h3, break out of the level loop
+                if (productName) break;
+                
+                // Move up one level
+                currentElement = currentElement.parentElement;
+            }
+            
+            // Now look for price in P tags specifically
+            currentElement = productContainer;
+            for (var level2 = 0; level2 < 4; level2++) {
+                if (!currentElement) break;
+                
+                // Look for p elements that contain price
+                var pElements = currentElement.querySelectorAll('p');
+                for (var p = 0; p < pElements.length; p++) {
+                    var pText = pElements[p].textContent.trim();
+                    var priceMatch = pText.match(/₦([\d,]+)\s*\[([^\]]+)\]/);
+                    
+                    if (priceMatch) {
+                        productPrice = parseInt(priceMatch[1].replace(/,/g, ''), 10);
+                        priceText = pText;
+                        
+                        // Extract unit from the price text
+                        var unitMatch = pText.match(/\[(PER\s+[^\]]+)\]/i);
+                        if (unitMatch) {
+                            unit = unitMatch[1].toLowerCase();
+                        } else {
+                            // Fallback: look for "per" in the text
+                            var perMatch = pText.match(/(per\s+\w+)/i);
+                            if (perMatch) {
+                                unit = perMatch[1].toLowerCase();
+                            } else {
+                                unit = 'per item';
+                            }
+                        }
+                        break;
+                    }
+                    
+                    // Alternative pattern: ₦24,970 [PER BAG]
+                    var altMatch = pText.match(/₦([\d,]+)/);
+                    if (altMatch && pText.toLowerCase().indexOf('per') !== -1) {
+                        productPrice = parseInt(altMatch[1].replace(/,/g, ''), 10);
+                        priceText = pText;
+                        
+                        if (pText.toLowerCase().indexOf('per bag') !== -1) {
+                            unit = 'per bag';
+                        } else if (pText.toLowerCase().indexOf('per kg') !== -1) {
+                            unit = 'per kg';
+                        } else {
+                            var perMatch2 = pText.match(/(per\s+\w+)/i);
+                            unit = perMatch2 ? perMatch2[1].toLowerCase() : 'per item';
+                        }
+                        break;
+                    }
+                }
+                
+                if (productPrice > 0) break;
+                
+                // Move up one level
+                currentElement = currentElement.parentElement;
+            }
+            
+            // Fallback: if no h3 found, look for any text that could be a product name
+            if (!productName) {
+                currentElement = productContainer;
+                for (var fallback = 0; fallback < 3; fallback++) {
+                    if (!currentElement) break;
+                    
+                    var siblings = currentElement.parentElement ? currentElement.parentElement.children : [];
+                    for (var i = 0; i < siblings.length; i++) {
+                        var sibling = siblings[i];
+                        var text = sibling.textContent.trim();
+                        
+                        // Look for product name (text without price and not "Add to Cart")
+                        if (text && text.indexOf('₦') === -1 && text.indexOf('Add to Cart') === -1 && text.length > 3) {
+                            // Skip if it looks like navigation or common elements
+                            if (text.indexOf('Home') === -1 && text.indexOf('Cart') === -1 && text.indexOf('Login') === -1) {
+                                productName = text;
+                                break;
+                            }
+                        }
+                    }
+                    
+                    if (productName) break;
+                    currentElement = currentElement.parentElement;
+                }
+            }
+            
+            return {
+                name: productName || 'Unknown Product',
+                price: productPrice || 0,
+                priceText: priceText || '',
+                unit: unit || 'per item'
+            };
+        },
+        
+        // Update cart page content
+        updateCartPage: function() {
+            // Only run on cart page
+            if (!window.location.href.includes('cart') && !document.title.includes('Cart')) {
+                return;
+            }
+            
+            const cart = this.getCart();
+            const shippingFeePerBag = 600;
+            
+            // Find cart container
+            let cartContainer = document.querySelector('.cart-items');
+            if (!cartContainer) {
+                // Create cart container if it doesn't exist
+                const cartSection = document.querySelector('body');
+                cartContainer = document.createElement('div');
+                cartContainer.className = 'cart-items';
+                
+                // Insert after "Your Shopping Cart" heading
+                const headings = document.querySelectorAll('h1, h2, h3');
+                let insertPoint = null;
+                for (let heading of headings) {
+                    if (heading.textContent.includes('Cart') || heading.textContent.includes('Total')) {
+                        insertPoint = heading.nextElementSibling || heading;
+                        break;
+                    }
+                }
+                
+                if (insertPoint) {
+                    insertPoint.parentNode.insertBefore(cartContainer, insertPoint.nextSibling);
+                } else {
+                    cartSection.appendChild(cartContainer);
+                }
+            }
+            
+            // Calculate totals
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const totalBags = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const shippingFee = totalBags * shippingFeePerBag;
+            const grandTotal = subtotal + shippingFee;
+            
+            // Generate cart HTML
+            var cartHTML = '';
+            
+            // Start container
+            cartHTML += '<div style="margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background: #f9f9f9;">';
+            cartHTML += '<h3 style="margin-bottom: 15px; color: #333; font-size: 18px; font-weight: bold;">Cart Items</h3>';
+            
+            if (cart.length === 0) {
+                cartHTML += '<p style="color: #666; text-align: center; padding: 20px;">Your cart is empty</p>';
+            } else {
+                // Add each cart item
+                for (var i = 0; i < cart.length; i++) {
+                    var item = cart[i];
+                    cartHTML += '<div style="display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #eee; margin-bottom: 10px;">';
+                    
+                    // Product info
+                    cartHTML += '<div style="flex: 1;">';
+                    cartHTML += '<h4 style="margin: 0; color: #333; font-weight: bold;">' + item.name + '</h4>';
+                    cartHTML += '<p style="margin: 5px 0; color: #666;">₦' + item.price.toLocaleString() + ' ' + (item.unit || 'per item') + '</p>';
+                    cartHTML += '</div>';
+                    
+                    // Quantity controls
+                    cartHTML += '<div style="display: flex; align-items: center; gap: 10px;">';
+                    cartHTML += '<button onclick="FarmCart.updateQuantity(' + item.id + ', ' + (item.quantity - 1) + ')" ';
+                    cartHTML += 'style="width: 30px; height: 30px; border: 1px solid #ddd; background: #f5f5f5; cursor: pointer; border-radius: 4px;">-</button>';
+                    cartHTML += '<span style="min-width: 20px; text-align: center; font-weight: bold;">' + item.quantity + '</span>';
+                    cartHTML += '<button onclick="FarmCart.updateQuantity(' + item.id + ', ' + (item.quantity + 1) + ')" ';
+                    cartHTML += 'style="width: 30px; height: 30px; border: 1px solid #ddd; background: #f5f5f5; cursor: pointer; border-radius: 4px;">+</button>';
+                    cartHTML += '<button onclick="FarmCart.removeItem(' + item.id + ')" ';
+                    cartHTML += 'style="margin-left: 10px; padding: 5px 10px; background: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer;">Remove</button>';
+                    cartHTML += '</div>';
+                    
+                    // Item total
+                    cartHTML += '<div style="min-width: 100px; text-align: right; font-weight: bold;">';
+                    cartHTML += '₦' + (item.price * item.quantity).toLocaleString();
+                    cartHTML += '</div>';
+                    
+                    cartHTML += '</div>';
+                }
+                
+                // Add totals section
+                cartHTML += '<div style="margin-top: 20px; padding-top: 15px; border-top: 2px solid #ddd;">';
+                cartHTML += '<div style="display: flex; justify-content: space-between; margin-bottom: 5px;">';
+                cartHTML += '<span>Subtotal:</span>';
+                cartHTML += '<span style="font-weight: bold;">₦' + subtotal.toLocaleString() + '</span>';
+                cartHTML += '</div>';
+                cartHTML += '<div style="display: flex; justify-content: space-between; margin-bottom: 5px;">';
+                cartHTML += '<span>Shipping (' + totalBags + ' items × ₦600):</span>';
+                cartHTML += '<span style="font-weight: bold;">₦' + shippingFee.toLocaleString() + '</span>';
+                cartHTML += '</div>';
+                cartHTML += '<div style="display: flex; justify-content: space-between; margin-top: 10px; padding-top: 10px; border-top: 1px solid #ddd; font-size: 18px;">';
+                cartHTML += '<span style="font-weight: bold;">Grand Total:</span>';
+                cartHTML += '<span style="font-weight: bold; color: #28a745;">₦' + grandTotal.toLocaleString() + '</span>';
+                cartHTML += '</div>';
+                cartHTML += '</div>';
+            }
+            
+            cartHTML += '</div>';
+            
+            cartContainer.innerHTML = cartHTML;
+            
+            // Update total display if it exists
+            const totalElements = document.querySelectorAll('[textContent*="Total"], [innerHTML*="Total"]');
+            totalElements.forEach(element => {
+                if (element.textContent.includes('₦')) {
+                    element.textContent = element.textContent.replace(/₦[\d,\.]+/, `₦${grandTotal.toLocaleString()}.00`);
+                }
+            });
+        },
+        
+        // Initialize cart system
+        init: function() {
+            // Update cart count on page load
+            this.updateCartCount();
+            
+            // Add event listeners to "Add to Cart" buttons
+            var self = this;
+            document.addEventListener('click', function(e) {
+                var button = e.target;
+                
+                // Check if clicked element is an "Add to Cart" button
+                if (button.textContent && button.textContent.trim() === 'Add to Cart') {
+                    e.preventDefault();
+                    
+                    var productInfo = self.parseProductInfo(button);
+                    if (productInfo.price > 0) {
+                        self.addItem(productInfo);
+                    } else {
+                        // Create custom alert instead of using alert()
+                        self.showCustomAlert('Unable to determine product price. Please try again.');
+                    }
+                }
+            });
+            
+            // Update cart page if we're on the cart page
+            if (window.location.href.includes('cart') || document.title.includes('Cart')) {
+                // Wait a bit for page to fully load
+                var self = this;
+                setTimeout(function() {
+                    self.updateCartPage();
+                }, 100);
+            }
+        },
+        
+        // Show custom alert dialog
+        showCustomAlert: function(message) {
+            var modal = document.createElement('div');
+            modal.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center;';
+            
+            var alertBox = document.createElement('div');
+            alertBox.style.cssText = 'background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); max-width: 400px; margin: 20px;';
+            
+            alertBox.innerHTML = '<p style="margin: 0 0 15px 0; color: #333;">' + message + '</p>' +
+                                '<button onclick="this.closest(\'div[style*=\"position: fixed\"]\').remove()" style="background: #5D5CDE; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">OK</button>';
+            
+            modal.appendChild(alertBox);
+            document.body.appendChild(modal);
+        }
+    };
+    
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            FarmCart.init();
+        });
+    } else {
+        FarmCart.init();
+    }
+    
+    // Make FarmCart globally available for onclick handlers
+    window.FarmCart = FarmCart;
+    
+})();
+
+        // Dark mode support
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+</body>
+</html>
